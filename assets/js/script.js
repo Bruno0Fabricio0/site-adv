@@ -7,6 +7,8 @@ const links = document.querySelectorAll('[data-scroll]');
 const animated = document.querySelectorAll('.fade-up');
 const portrait = document.querySelector('.portrait');
 const progress = document.querySelector('.scroll-progress');
+const form = document.querySelector('#contact-form');
+let formStartTs = 0;
 
 function setSticky() {
   const s = window.scrollY > 8;
@@ -123,6 +125,55 @@ function init() {
   if (navToggle) navToggle.addEventListener('click', toggleNav);
   links.forEach((a) => a.addEventListener('click', handleLink));
   initTheme();
+  if (form) {
+    formStartTs = Date.now();
+    form.addEventListener('submit', onFormSubmit);
+  }
 }
 
 document.addEventListener('DOMContentLoaded', init);
+
+function onFormSubmit(e) {
+  e.preventDefault();
+  const status = form.querySelector('.form-status');
+  if (!status) return;
+  const data = new FormData(form);
+  const hp = (data.get('website') || '').toString().trim();
+  if (hp) {
+    status.textContent = 'Erro de validação.';
+    return;
+  }
+  const nome = (data.get('nome') || '').toString().trim();
+  const email = (data.get('email') || '').toString().trim();
+  const telefone = (data.get('telefone') || '').toString().trim();
+  const assunto = (data.get('assunto') || '').toString().trim();
+  const mensagem = (data.get('mensagem') || '').toString().trim();
+  if (!nome || !email || !telefone || !assunto || !mensagem) {
+    status.textContent = 'Preencha todos os campos obrigatórios.';
+    return;
+  }
+  const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+  if (!emailOk) {
+    status.textContent = 'Informe um e-mail válido.';
+    return;
+  }
+  const delta = Date.now() - formStartTs;
+  if (delta < 2500 || mensagem.length < 10) {
+    status.textContent = 'Verificação de segurança: tente novamente.';
+    return;
+  }
+  const to = 'contato@carolinabaia.adv.br';
+  const subj = encodeURIComponent(`[Site] ${assunto} — ${nome}`);
+  const bodyLines = [
+    `Nome: ${nome}`,
+    `E-mail: ${email}`,
+    `Telefone/WhatsApp: ${telefone}`,
+    ``,
+    mensagem
+  ].join('%0D%0A');
+  const mailto = `mailto:${to}?subject=${subj}&body=${bodyLines}`;
+  window.location.href = mailto;
+  status.textContent = 'Mensagem preparada no seu e-mail. Obrigado pelo contato!';
+  form.reset();
+  formStartTs = Date.now();
+}

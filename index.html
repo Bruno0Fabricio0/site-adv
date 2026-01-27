@@ -84,6 +84,7 @@
             <li><a href="#sobre" data-scroll>Sobre</a></li>
             <li><a href="#areas" data-scroll>Áreas</a></li>
             <li><a href="#contato" data-scroll>Contato</a></li>
+            <li><a href="#localizacao" data-scroll>Localização</a></li>
           </ul>
           <a class="btn btn-outline" href="#contato" data-scroll
             >Entre em Contato</a
@@ -91,6 +92,7 @@
         </nav>
       </div>
     </header>
+    
 
     <main id="conteudo">
       <section class="hero" id="inicio">
@@ -223,7 +225,7 @@
           <div class="cta-actions">
             <a
               class="btn btn-primary"
-              href="https://wa.me/5591988592333"
+              href="https://wa.me/5591988592333?text=Ol%C3%A1%2C%20gostaria%20de%20agendar%20uma%20reuni%C3%A3o%20jur%C3%ADdica."
               target="_blank"
               rel="noopener"
               >WhatsApp</a
@@ -231,6 +233,48 @@
             <a class="btn btn-outline" href="mailto:carolinabaia1@gmail.com"
               >E-mail</a
             >
+          </div>
+          <form id="contact-form" class="contact-form" novalidate>
+            <div class="form-grid">
+              <label class="form-group">Nome completo
+                <input type="text" name="nome" required />
+              </label>
+              <label class="form-group">E-mail
+                <input type="email" name="email" required />
+              </label>
+              <label class="form-group">Telefone/WhatsApp
+                <input type="tel" name="telefone" required />
+              </label>
+              <label class="form-group">Assunto
+                <input type="text" name="assunto" required />
+              </label>
+            </div>
+            <label class="form-group">Mensagem
+              <textarea name="mensagem" rows="5" required></textarea>
+            </label>
+            <input type="text" name="website" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true" />
+            <div class="form-actions">
+              <button type="submit" class="btn btn-primary">Enviar Mensagem</button>
+              <a class="btn btn-ghost" href="https://wa.me/5591988592333?text=Ol%C3%A1%2C%20gostaria%20de%20agendar%20uma%20reuni%C3%A3o%20jur%C3%ADdica." target="_blank" rel="noopener">Falar no WhatsApp</a>
+            </div>
+            <div class="form-status" role="alert" aria-live="polite"></div>
+          </form>
+        </div>
+      </section>
+      <section class="section location" id="localizacao">
+        <div class="container">
+          <div class="section-head fade-up">
+            <h2 class="section-title">Nossa Localização</h2>
+            <p class="section-lead">176 Tv. Sn-4</p>
+          </div>
+          <div class="map-wrap">
+            <iframe
+              title="Mapa - Carolina Baia Advocacia"
+              src="https://www.google.com/maps?q=176%20Tv.%20Sn-4&output=embed"
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+              allowfullscreen
+            ></iframe>
           </div>
         </div>
       </section>
@@ -335,7 +379,7 @@
 
     <a
       class="floating-cta"
-      href="https://wa.me/5591988592333"
+      href="https://wa.me/5591988592333?text=Ol%C3%A1%2C%20gostaria%20de%20agendar%20uma%20reuni%C3%A3o%20jur%C3%ADdica."
       target="_blank"
       rel="noopener"
       aria-label="Falar no WhatsApp"
