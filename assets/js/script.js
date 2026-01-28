@@ -162,7 +162,7 @@ function onFormSubmit(e) {
     status.textContent = 'Verificação de segurança: tente novamente.';
     return;
   }
-  const to = 'contato@carolinabaia.adv.br';
+  const to = 'caralinabaia1@gmail.com';
   const subj = encodeURIComponent(`[Site] ${assunto} — ${nome}`);
   const bodyLines = [
     `Nome: ${nome}`,
